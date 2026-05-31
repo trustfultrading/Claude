@@ -1554,4 +1554,339 @@ Sammelplatz kennen, Fluchtwege freihalten, im Brandfall: Aufzug verboten!`,
       },
     ],
   },
+  {
+    id: 'elektriker',
+    titel: 'Elektriker Grundlagen',
+    icon: '🔌',
+    farbe: 'teal',
+    beschreibung: 'Stromlaufpläne, Kabel, Schutzeinrichtungen, Schaltgeräte, Schaltschrankbau',
+    lektionen: [
+      {
+        id: 'stromlaufplaene',
+        titel: 'Stromlaufpläne lesen',
+        inhalt: `Stromlaufpläne (auch Schaltpläne) sind die «Sprache» des Elektrikers und Automatikers. Sie zeigen, wie elektrische Schaltungen aufgebaut sind, und sind Grundlage für Installation, Inbetriebnahme und Fehlersuche.
+
+## Normen für Schaltzeichen
+Elektrische Schaltzeichen sind nach DIN EN 60617 normiert. So sind Pläne international verständlich.
+
+## Wichtige Schaltzeichen
+
+### Betriebsmittel-Kennzeichen (BMK)
+Jedes Bauteil erhält ein eindeutiges Kürzel:
+- -K1: Schütz oder Relais Nummer 1
+- -Q1: Leistungsschalter (Motorschutzschalter)
+- -F1: Sicherung oder Leitungsschutzschalter
+- -M1: Motor Nummer 1
+- -H1: Lampe / Signalleuchte
+- -S1: Schalter / Taster
+- -T1: Transformator
+
+### Leitungsfarben (DIN VDE 0100)
+- L1, L2, L3: Aussenleiter (Phasen) – braun, schwarz, grau
+- N: Neutralleiter – blau
+- PE: Schutzleiter – grün-gelb
+- Steuerleitung: oft schwarz oder blau (24 V DC)
+
+## Stromlaufplan (Schaltplan)
+Ein Stromlaufplan hat zwei Bereiche:
+
+### Hauptstromkreis (Leistungsteil)
+Zeigt Leistungsfluss: Netz → Schutzschalter → Schütz → Motor
+Dicke Linien, hohe Spannungen (400 V AC)
+
+### Steuerstromkreis (Sekundärstromkreis)
+Zeigt Steuerlogik: Taster, Relaiskontakte, SPS-E/A
+Dünne Linien, niedrige Spannung (24 V DC oder 230 V AC)
+
+## Stromlaufplan vs. Installationsplan
+- Stromlaufplan (funktional): Zeigt WIE die Schaltung funktioniert
+- Installationsplan (topografisch): Zeigt WO Kabel verlegt werden
+
+## Lesen eines Stromlaufplans
+1. Oben: Einspeisepunkt (Netz/Trafo)
+2. Unten: Rückleiter (N/PE)
+3. Strom fliesst von oben nach unten, von links nach rechts
+4. Geöffnete Kontakte = Ruhezustand (nicht betätigt)
+
+## Kreuzungszeichen
+- Leitungen kreuzen sich ohne Verbindung: einfache Kreuzung
+- Leitungen verbunden: Punkt an der Kreuzung`,
+      },
+      {
+        id: 'kabel-leitungen',
+        titel: 'Leitungen und Kabel',
+        inhalt: `Die richtige Kabelauswahl ist entscheidend für Sicherheit, Zuverlässigkeit und Langlebigkeit einer elektrischen Anlage.
+
+## Kabelbezeichnung (Aufbau NYM-J 5×2,5)
+- N: Normleitung (VDE-Norm)
+- Y: PVC-Isolierung
+- M: Mantelleitung
+- J: Mit Schutzleiter (ohne J = kein PE)
+- 5×2,5: 5 Adern, Querschnitt 2,5 mm²
+
+## Wichtige Kabeltypen
+
+### NYM-J (Mantelleitung)
+Verwendung: Festinstallation in Gebäuden, Maschinen
+Spannung: bis 300/500 V
+Adern: 2, 3, 4, 5 Adern (J = mit PE)
+Farben: je nach Norm (blau=N, grün-gelb=PE, andere=L)
+
+### NYY-J (Erdkabel)
+Verwendung: Erdverlegung, Nassräume, Ausseninstallation
+PVC-Aussenmantel, robuster als NYM
+
+### LIYCY (Steuerlitze, geschirmt)
+Verwendung: Steuerleitungen, Signalkabel in Schaltschränken
+Schirm (CY): Abschirmung gegen elektromagnetische Störungen (EMV)
+
+### LAPP ÖLFLEX (Schleppkette)
+Verwendung: Kabelführungen an beweglichen Maschinenteilen
+Sehr flexibel, hohe Biegewechselfestigkeit
+
+## Querschnittsberechnung
+Nach VDE 0100 / NIN muss der Querschnitt nach zulässiger Strombelastung und Spannungsabfall gewählt werden.
+
+Faustformel (Kupferleiter, Verlegeart B2):
+- 1,5 mm²: bis 16 A (Beleuchtung, Steckdosen)
+- 2,5 mm²: bis 20 A (Standard-Steckdosenkreis)
+- 4 mm²: bis 25 A
+- 6 mm²: bis 32 A
+- 10 mm²: bis 40 A
+
+Korrekturfaktoren beachten:
+- Häufung (mehrere Kabel zusammen): Strom reduzieren
+- Hohe Umgebungstemperatur: Strom reduzieren
+
+## Spannungsabfall
+ΔU = √3 × I × l × (R × cos φ + X × sin φ) [V] (Drehstrom)
+Vereinfacht: ΔU [%] = I × l / (κ × A × U_N) × 100
+κ (Kupfer) = 56 m/(Ω·mm²)
+Zulässig: max. 4% im Verbraucher (nach NIN)
+
+## Aderidentifikation
+Einzeladern werden mit Aderendhülsen und Beschriftungsclips versehen.
+Kabeleinführungen in Schaltschränke mit Kabelverschraubungen (IP-dicht) ausführen.`,
+      },
+      {
+        id: 'schutzeinrichtungen',
+        titel: 'Schutzeinrichtungen',
+        inhalt: `Schutzeinrichtungen schützen Personen vor elektrischem Schlag und Anlagen vor Überstrom, Kurzschluss und Fehlerströmen.
+
+## Leitungsschutzschalter (LSS / MCB)
+Schutz vor: Überlast und Kurzschluss
+
+### Kennbuchstaben (Auslösecharakteristik)
+- B (3–5 × In): Leitungs- und Geräteschutz (Beleuchtung, Steckdosen)
+- C (5–10 × In): Standard für Motoren, Transformatoren
+- D (10–20 × In): Hohe Anlaufströme (grosse Motoren, Transformatoren)
+
+### Nennströme nach DIN
+1, 2, 3, 4, 6, 10, 13, 16, 20, 25, 32, 40, 50, 63 A
+
+Auslösung:
+- Thermisch: Bei Überlast (Bimetall, träge Auslösung)
+- Magnetisch: Bei Kurzschluss (sofortige Auslösung)
+
+## FI-Schutzschalter (RCD)
+Schutz vor: Personenschutz (Fehlerstrom) und Brandschutz
+
+Typen:
+- Typ A: AC-Fehlerströme + gepulste DC-Fehlerströme (Standard)
+- Typ B: Alle Fehlerströme inkl. glatter DC (Frequenzumrichter!)
+- Typ F: Frequenzumrichter ohne Typ B
+
+Nennfehlerströme:
+- 10 mA: Zusatzschutz in Badezimmern
+- 30 mA: Personenschutz (Pflicht in Wohn-/Schlafräumen, Baustellen)
+- 100 mA: Selektiv (vorgelagert)
+- 300 mA: Brandschutz
+
+## Motorschutzschalter (MSS / MMS)
+Kombiniert: Leitungsschutz + thermischer Motorschutz (einstellbar)
+Stellt Auslösebereich ein: z.B. 4–6,3 A für 1,5-kW-Motor
+Manuell zurücksetzbar nach Auslösung
+
+## Schmelzsicherung (NH-Sicherung)
+Für Hauptverteilungen, hohe Kurzschlussleistungen
+Kennzeichen: gG (general gängig, Kabelschutz), gM (Motorschutz)
+Einmal verwendbar → nach Auslösung ersetzen
+
+## Überspannungsschutz (SPD – Surge Protective Device)
+- Typ 1 (B): Blitzstromableiter am Hausanschluss
+- Typ 2 (C): Überspannungsschutz in Unterverteilung
+- Typ 3 (D): Geräteschutz an Steckdose/Klemmleiste
+
+## Selektivität
+Vorgelagerte Sicherungen müssen grösser sein als nachgelagerte → Fehler schaltet nur betroffenen Kreis ab, nicht die übergeordnete Einspeisung.`,
+      },
+      {
+        id: 'schaltgeraete',
+        titel: 'Schaltgeräte: Schütze und Relais',
+        inhalt: `Schütze und Relais sind elektromechanische Schalter, die durch eine Steuerspannung betätigt werden und Lasten ein- und ausschalten.
+
+## Schütz (Leistungsschütz / Contactor)
+Ein Schütz ist ein elektromagnetisch betätigter Leistungsschalter für wiederholtes Ein- und Ausschalten.
+
+### Aufbau
+- Spule (Elektromagnet): Zieht den Anker an (Steuerkreis 24V DC oder 230V AC)
+- Hauptkontakte: Schalten den Laststrom (400V, bis mehrere 100A)
+- Hilfskontakte: Für Steuerstromkreis (oft 1 NO + 1 NC inklusive)
+
+### Bezeichnung (z.B. Siemens 3RT)
+- 3RT2016-1AB02: Schütz 9A, Spule 24V AC, 1 NO + 1 NC Hilfskontakte
+
+### Stern-Dreieck-Schaltung mit Schützen
+Benötigt 3 Schütze:
+- K1M: Hauptschütz (immer in Betrieb)
+- K3M: Sternschütz (Anlauf)
+- K2M: Dreieckschütz (Betrieb)
+Verriegelung: K3M und K2M dürfen nie gleichzeitig einschalten!
+
+## Relais (Hilfsschütz / Relay)
+Kleineres Schaltgerät, nur für Steuerströme (keine Leistungslasten).
+
+Typen:
+- Koppelrelais: Trennt SPS-Ausgänge von höheren Spannungen
+- Zeitrelais: Schaltet nach einstellbarer Zeit
+- Thermisches Relais: Motorschutz (Bimetall)
+- Sicherheitsrelais: Zwangsgeführte Kontakte für Not-Aus-Kreis
+
+## Motorschutzrelais
+Einstellbarer Überlastschutz für Motoren (thermische Auslösung).
+Stellt Nennstrom des Motors ein (z.B. 6 A für 2,2-kW-Motor).
+Bei Auslösung: LED-Anzeige, manuelle Rückstellung erforderlich.
+
+## Sanftanlasser (Soft Starter)
+Begrenzt Anlaufstrom durch schrittweises Hochfahren der Spannung.
+Einfacher und günstiger als Frequenzumrichter.
+Nur für Anlauf und Auslauf – keine Drehzahlregelung im Betrieb.
+
+## Schaltgerätekombinationen
+In der Praxis werden kombiniert:
+Leitungsschutzschalter + Motorschutzschalter + Schütz + FI = komplette Motorsteuerung`,
+      },
+      {
+        id: 'schaltschrankbau',
+        titel: 'Schaltschrankbau',
+        inhalt: `Der Schaltschrank ist die zentrale Steuerzentrale einer Anlage. Sein Aufbau muss normgerecht, übersichtlich und wartungsfreundlich sein.
+
+## Normvorschriften
+- IEC 61439 / DIN EN 61439: Niederspannungs-Schaltgerätekombinationen
+- IP-Schutzgrad nach IEC 60529 (min. IP54 für Maschinenumgebung)
+- Betriebstemperatur beachten: Standard 35°C Maximaltemperatur innen
+
+## Mechanischer Aufbau
+
+### Hutschiene (DIN-Schiene, EN 50022)
+35 mm breite Profilschiene für Reiheneinbaugeräte (LSS, Schütze, Reihenklemmen)
+
+### Kabelkanal (Verdrahtungskanal)
+Führt Kabel geordnet und zugänglich. Deckel abnehmbar für Verdrahtungsarbeiten.
+
+### Schaltschrankgrössen (Rittal, Siemens SIVACON)
+Breite × Höhe × Tiefe: z.B. 600×800×300 mm
+Schutzart aussen: IP54 oder IP65 (Maschinenschutzgehäuse)
+
+## Elektrischer Aufbau
+
+### Einspeisung oben
+L1, L2, L3, N, PE → Hauptleitungsschutzschalter (HLSS)
+Anschliessend: Phasenverteilung auf Unterkreise
+
+### Busbarsystem (Sammelschienen)
+PE-Schiene: Alle Schutzleiter verbunden (grün-gelb)
+N-Schiene: Alle Neutralleiter (blau)
+
+### Reihenklemmen
+Klemmenleiste trennt Aussen- von Innenverdrahtung.
+Bezeichnung der Klemmen entspricht Schaltplan (X1:1, X1:2, ...)
+Klemmenarten: Durchgangsklemme, Trennklemme, Messtrennklemme, PE-Klemme
+
+## Verdrahtungsregeln
+- Mindestbiegeradius der Kabel einhalten
+- Steuer- und Leistungskabel GETRENNT verlegen (EMV!)
+- Kabel in Kabelkanälen zu max. 60% füllen
+- Jede Ader mit Aderendhülse und Beschriftung versehen
+- Leeradern beschriften (z.B. «Reserve»)
+
+## Thermische Auslegung
+Verlustleistung aller Komponenten berechnen → Kühlung dimensionieren
+Wärmetauscher oder Klimagerät bei hoher Verlustleistung.
+Ohne Kühlung: max. 35°C Innentemperatur (Korrekturfaktor auf Nennwerte!)
+
+## Dokumentation (Pflicht!)
+- Stromlaufplan (aktuell!)
+- Klemmenplan
+- Kabelliste / Leitungsverzeichnis
+- Stückliste aller Komponenten
+- CE-Kennzeichnung und Konformitätserklärung`,
+      },
+      {
+        id: 'klemmen-verbindungen',
+        titel: 'Klemmen und Verbindungstechnik',
+        inhalt: `Verbindungstechnik ist das A und O einer zuverlässigen elektrischen Anlage. Schlechte Verbindungen sind eine der häufigsten Ursachen für Maschinenausfälle.
+
+## Aderendhülsen
+Aderendhülsen (nach DIN 46228) werden vor dem Einlegen in Klemmen auf flexible Litzen gecrimpt.
+
+Farben (DIN 46228-4):
+- 0,25 mm²: weiss
+- 0,5 mm²: weiss
+- 0,75 mm²: grau
+- 1,0 mm²: rot
+- 1,5 mm²: schwarz
+- 2,5 mm²: blau
+- 4,0 mm²: grau
+- 6,0 mm²: gelb
+- 10 mm²: rot (doppelt isoliert)
+
+Wichtig: Korrekte Grösse wählen! Zu grosse oder zu kleine Hülsen = schlechter Kontakt!
+
+## Klemmenarten
+
+### Schraubklemme
+Klassische Klemme mit Schraubenverbindung.
+Anzugsmoment einhalten (steht auf Klemme, z.B. 0,5 Nm bei 2,5 mm²).
+Regelmässig nachziehen (Vibrationen lockern Schrauben).
+
+### Federkraftklemme (WAGO, Phoenix PUSH IN)
+Kein Werkzeug nötig zum Einlegen (Drücker für Lösen).
+Vibrationsfest, schnelle Montage.
+WAGO 221: Universell für 0,2–6 mm², wird oft für Feldinstallation verwendet.
+
+### Crimpverbindung
+Unlösbare Pressverbindung mit Crimpzange.
+Steckverbinder, Kabelschuhe, Aderendhülsen.
+Qualitätsmerkmal: Crimp nach DIN EN 60352 zertifiziert.
+
+### Schraubverbinder (Lüsterklemme)
+Nur für feste Adern, nicht für flexible Litzen ohne Aderendhülse!
+Im professionellen Schaltschrankbau selten verwendet.
+
+## Steckverbinder
+
+### M12-Steckverbinder (Rundstecker)
+4-polig: Sensoren/Aktoren (Näherungsschalter, Ventile)
+5-polig: mit PE (Feldgeräte, Motor)
+8-polig: Profinet/Ethernet-Feldbus
+IP67 möglich
+
+### HAN-Steckverbinder (Harting)
+Industriesteckverbinder für häufige Steckverbindungen.
+Für Wartungseinheiten, die oft ab- und angesteckt werden.
+
+## Kabelverlegung im Schaltschrank
+- Getrennte Kabelkanäle für Leistung (≥230V) und Steuerung (24V)
+- Schirme einseitig oder beidseitig erden (je nach EMV-Konzept)
+- Mindestbiegeradius einhalten (meist 5–10× Aussendurchmesser)
+
+## Prüfungen vor Inbetriebnahme
+1. Durchgangsprüfung: Alle Verbindungen korrekt?
+2. Isolationswiderstand: > 1 MΩ (Prüfspannung 500 V DC)
+3. Schutzleiterprüfung: Widerstand < 0,3 Ω
+4. FI-Prüfung: Auslösung bei 30 mA (Prüfgerät oder Test-Taste)`,
+      },
+    ],
+  },
 ]

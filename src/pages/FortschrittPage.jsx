@@ -5,7 +5,7 @@ import { useProgress } from '../hooks/useProgress'
 const barColorMap = {
   blue: 'bg-blue-500', green: 'bg-green-500', cyan: 'bg-cyan-500',
   orange: 'bg-orange-500', purple: 'bg-purple-500', red: 'bg-red-500',
-  indigo: 'bg-indigo-500', yellow: 'bg-yellow-500',
+  indigo: 'bg-indigo-500', yellow: 'bg-yellow-500', teal: 'bg-teal-500',
 }
 
 const achievements = [
@@ -17,6 +17,7 @@ const achievements = [
   { id: 'mechanik', label: 'Mechanik-Meister', icon: '🔧', moduleId: 'mechanik', threshold: 80 },
   { id: 'digital', label: 'Digitaltechniker', icon: '💻', moduleId: 'digitaltechnik', threshold: 80 },
   { id: 'sicherheit', label: 'Sicherheitsprofi', icon: '🦺', moduleId: 'arbeitssicherheit', threshold: 80 },
+  { id: 'elektriker', label: 'Elektriker-Profi', icon: '🔌', moduleId: 'elektriker', threshold: 80 },
 ]
 
 export default function FortschrittPage() {

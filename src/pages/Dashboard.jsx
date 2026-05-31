@@ -11,6 +11,7 @@ const colorMap = {
   red: 'bg-red-100 border-red-300 hover:border-red-500',
   indigo: 'bg-indigo-100 border-indigo-300 hover:border-indigo-500',
   yellow: 'bg-yellow-100 border-yellow-300 hover:border-yellow-500',
+  teal: 'bg-teal-100 border-teal-300 hover:border-teal-500',
 }
 
 const barColorMap = {
@@ -22,6 +23,7 @@ const barColorMap = {
   red: 'bg-red-500',
   indigo: 'bg-indigo-500',
   yellow: 'bg-yellow-500',
+  teal: 'bg-teal-500',
 }
 
 export default function Dashboard() {
