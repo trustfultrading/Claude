@@ -8,6 +8,7 @@ export const modules = [
     lektionen: [
       {
         id: 'ohm',
+        diagramId: 'ohm',
         titel: 'Ohmsches Gesetz',
         inhalt: `Das Ohmsche Gesetz ist das Fundament der Elektrotechnik und beschreibt den Zusammenhang zwischen elektrischer Spannung (U), Widerstand (R) und Stromstärke (I).
 
@@ -38,6 +39,7 @@ In der Automatisierungstechnik begegnest du dem Ohmschen Gesetz täglich: Bei de
       },
       {
         id: 'kirchhoff',
+        diagramId: 'kirchhoff',
         titel: 'Kirchhoffsche Gesetze',
         inhalt: `Die Kirchhoffschen Gesetze ermöglichen die Berechnung komplexer elektrischer Netzwerke mit mehreren Maschen und Knoten.
 
@@ -71,6 +73,7 @@ In einer Steuerungsanlage werden mehrere Magnetventile parallel an 24 V DC betri
       },
       {
         id: 'ac-dc',
+        diagramId: 'wechselstrom',
         titel: 'Gleich- und Wechselstrom',
         inhalt: `Elektrischer Strom tritt in zwei grundlegenden Formen auf: Gleichstrom (DC) und Wechselstrom (AC). Im Berufsalltag eines Automatikers begegnest du beiden Formen ständig.
 
@@ -106,6 +109,7 @@ Steuerungen arbeiten fast immer mit 24 V DC, die Leistungskreise (Motoren, Heizu
       },
       {
         id: 'leistung',
+        diagramId: 'leistung',
         titel: 'Elektrische Leistung',
         inhalt: `Die elektrische Leistung gibt an, wie viel Energie pro Zeiteinheit umgesetzt wird. Für den Automatiker ist sie wichtig bei der Auslegung von Antrieben, Sicherungen und Transformatoren.
 
@@ -427,6 +431,7 @@ Ein TIA-Projekt enthält:
     lektionen: [
       {
         id: 'pneumatik-grundlagen',
+        diagramId: 'frl',
         titel: 'Grundlagen der Pneumatik',
         inhalt: `Pneumatik nutzt Druckluft als Energieträger zur Erzeugung von Kräften und Bewegungen. In der Schweizer Fertigungs- und Automatisierungsindustrie ist Pneumatik unverzichtbar.
 
@@ -508,6 +513,7 @@ Schaltzustand 2: 1→4 offen, 2→3 offen (Zylinder fährt ein)
       },
       {
         id: 'zylinder',
+        diagramId: 'zylinder',
         titel: 'Pneumatische Zylinder',
         inhalt: `Pneumatische Zylinder wandeln Druckluftenergie in eine geradlinige Bewegung um. Sie sind die häufigsten Aktoren in der Automatisierungstechnik.
 
@@ -600,6 +606,7 @@ Hydrauliksysteme stehen unter sehr hohem Druck! Niemals auf Leckagen zeigen (Öl
     lektionen: [
       {
         id: 'motoren',
+        diagramId: 'sterndreieck',
         titel: 'Elektromotoren',
         inhalt: `Elektromotoren sind die wichtigsten Aktoren in der Automatisierungstechnik. Sie wandeln elektrische Energie in mechanische Bewegung um.
 
@@ -636,6 +643,7 @@ Umschaltung nach ca. 3–5 Sekunden
       },
       {
         id: 'frequenzumrichter',
+        diagramId: 'fu',
         titel: 'Frequenzumrichter (FU)',
         inhalt: `Der Frequenzumrichter (auch VFD – Variable Frequency Drive oder Umrichter) ermöglicht die stufenlose Drehzahlregelung von Asynchronmotoren und spart erheblich Energie.
 
@@ -866,6 +874,7 @@ Prozess → Aufnehmer (Sensor) → Wandler → Signal → Auswertung (SPS)
       },
       {
         id: 'temperaturmessung',
+        diagramId: 'pt100',
         titel: 'Temperaturmessung',
         inhalt: `Temperatur ist eine der häufigsten Messgrössen in der Industrie. Verschiedene Messprinzipien decken unterschiedliche Temperaturbereiche ab.
 
@@ -1208,6 +1217,7 @@ Beispiel: 1101 0110₂ = D6₁₆ = 214₁₀
       },
       {
         id: 'logikgatter',
+        diagramId: 'logik',
         titel: 'Logikgatter',
         inhalt: `Logikgatter sind die Grundbausteine der Digitaltechnik. Sie verarbeiten binäre Signale und liefern einen binären Ausgang.
 
@@ -1416,6 +1426,7 @@ Diese Regeln können Leben retten!
       },
       {
         id: 'schutz-erdung',
+        diagramId: 'pe_pruefung',
         titel: 'Schutzmassnähmen und Erdung',
         inhalt: `Schutzmassnähmen verhindern den elektrischen Schlag durch automatische Abschaltung oder durch Isolation vor gefährlichen Spannungen.
 

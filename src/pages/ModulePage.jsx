@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { modules } from '../data/module_data'
 import { useProgress } from '../hooks/useProgress'
+import { diagramMap } from '../components/Diagram'
 
 export default function ModulePage() {
   const { id } = useParams()
@@ -100,6 +101,12 @@ export default function ModulePage() {
             <div className="prose prose-sm max-w-none space-y-1">
               {formatContent(lesson.inhalt)}
             </div>
+            {lesson.diagramId && diagramMap[lesson.diagramId] && (
+              <div className="mt-6 pt-4 border-t">
+                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Visualisierung</div>
+                {diagramMap[lesson.diagramId]()}
+              </div>
+            )}
             <div className="mt-8 pt-4 border-t flex items-center justify-between">
               <div className="flex gap-2">
                 <button
