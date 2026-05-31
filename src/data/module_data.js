@@ -1889,4 +1889,478 @@ Für Wartungseinheiten, die oft ab- und angesteckt werden.
       },
     ],
   },
+  {
+    id: 'schaltplaene',
+    titel: 'Schaltpläne & Symbole',
+    icon: '📋',
+    farbe: 'pink',
+    beschreibung: 'Schaltzeichen lesen, Stromlaufpläne, Klemmenplan, Pneumatikschaltplan',
+    lektionen: [
+      {
+        id: 'schaltzeichen',
+        titel: 'Elektrische Schaltzeichen (DIN EN 60617)',
+        inhalt: `Schaltzeichen sind die Sprache des Elektrikers. Wer Schaltzeichen liest, versteht jeden Stromlaufplan – unabhängig von Hersteller oder Land.
+
+## Passive Bauelemente
+
+### Widerstand
+  ─┤├─  oder  ─/\\/\\─
+Begrenzt den Stromfluss. Einheit: Ohm [Ω].
+Anwendung: Vorwiderstände für LEDs, Messwiderstände, Spannungsteiler.
+
+### Kondensator (unpolar)
+  ─┤├─  (zwei parallele Linien)
+Speichert elektrische Energie. Sperrt Gleichstrom, lässt Wechselstrom durch.
+Anwendung: Entstörung, Zeitglieder, Pufferkondensatoren.
+
+### Kondensator (polar, Elko)
+  ─┤+├─  (Plus-Seite gekennzeichnet)
+Muss richtig gepolt werden (Plus an höheres Potential).
+
+### Spule / Induktivität
+  ─(~~~)─  oder  ─(UUU)─
+Speichert magnetische Energie. Widerstand steigt mit Frequenz.
+Anwendung: Transformatoren, Relais, Drosseln.
+
+## Schaltelemente
+
+### Schliesser (Normally Open, NO)
+  ─ / ─  oder  ─| |─
+Offen im Ruhezustand. Schliesst bei Betätigung.
+Symbol: Lücke in der Linie mit Schalterbrücke.
+
+### Öffner (Normally Closed, NC)
+  ─|/|─
+Geschlossen im Ruhezustand. Öffnet bei Betätigung.
+Symbol: Verbindung mit Schrägstrich (Unterbrechung).
+
+### Schliesser mit Verzögerung (TON)
+  ─| |─   (mit Verzögerungssymbol oben)
+Schliesst erst nach Ablauf einer eingestellten Zeit.
+
+### Taster (Drucktaster, nicht rastend)
+  ─[/]─
+Federt zurück nach Loslassen.
+Grün = Start, Rot = Stop (Norm).
+
+## Spulen / Magnete
+
+### Relais- oder Schützspule
+  ─(M)─  oder  ─(K1)─
+Zieht Kontakte an wenn Spannung anliegt.
+
+### Motor
+  ─(M)─  mit 3 Anschlüssen
+Drehstrommotor: 3 Phasen, Dreieck- oder Sternschaltung.
+
+## Schutz- und Schaltgeräte
+
+### Sicherung
+  ─[─]─  (Kasten mit Linie)
+Schmelzsicherung: Bricht bei Überstrom.
+
+### Leitungsschutzschalter (LSS)
+  ─[B16]─
+Automatisch, thermisch + magnetisch. B, C, D-Charakteristik.
+
+### FI-Schutzschalter (RCD)
+  ─[FI]─  mit Kreis
+Schaltet bei Fehlerstrom > 30 mA ab.
+
+### Motorschutzschalter (MSS)
+  ─[Q1]─
+Kombination: thermischer Schutz + manuelles Schalten.
+
+## Weitere Symbole
+
+### Lampe / Leuchte
+  ─(X)─  (Kreis mit Kreuz)
+Signalleuchte, Betriebsmeldung.
+
+### Klemme / Verbindungspunkt
+  ─●─
+Verbindung zweier Leiter.
+
+### Kreuzung ohne Verbindung
+  ─X─ (ohne Punkt)
+Leitungen kreuzen sich, sind aber NICHT verbunden.
+
+## Farbnormen für Taster (EN 60204-1)
+- Grün: EIN / Start
+- Rot: AUS / Stop
+- Gelb: Quittierung / Rücksetzen
+- Blau: Zweck frei wählbar
+- Schwarz/Grau: allgemein`,
+      },
+      {
+        id: 'stromlaufplan',
+        titel: 'Stromlaufplan lesen – Schritt für Schritt',
+        inhalt: `Ein Stromlaufplan zeigt die elektrische Funktion einer Anlage – nicht wo die Kabel liegen, sondern WIE die Schaltung funktioniert.
+
+## Aufbau eines Stromlaufplans
+
+### Hauptstromkreis (Leistungsteil)
+- Oben: Netzeinspeisung L1, L2, L3 (400 V AC)
+- Dicke Linien, hohe Ströme
+- Schutz- und Schaltgeräte in Reihe
+
+### Steuerstromkreis (Signalkreis)
+- Unten oder separat
+- 24 V DC (oder 230 V AC)
+- Taster, Relais, SPS-Ausgänge
+
+## Beispiel: Direktanlauf Motor mit Start/Stop
+
+\`\`\`
+HAUPTSTROMKREIS (400 V AC):
+
+       L1    L2    L3
+        |     |     |
+      [F1]  [F1]  [F1]   <- Sicherungen (16 A, Char. C)
+        |     |     |
+      [Q1]  [Q1]  [Q1]   <- Motorschutzschalter
+        |     |     |
+      [K1]  [K1]  [K1]   <- Schütz K1 Hauptkontakte
+        |     |     |
+       [M]                <- Drehstrommotor
+\`\`\`
+
+\`\`\`
+STEUERSTROMKREIS (24 V DC):
+
++24V -+--[S1 Stop/NC]--+--[S2 Start/NO]--+--(K1)--+-- 0V
+      |                 |                 |
+      |                 +---[K1 Hilfs]----+
+      |                     Selbsthaltung
+      +--[Q1 Therm./NC]-- (Motorschutz-Öffner)
+\`\`\`
+
+## Schritt-für-Schritt-Erklärung
+
+### Schritt 1: Starttaster S2 drücken
+- S2 (Schliesser) schliesst
+- Strom fliesst: +24V → S1 (NC, geschlossen) → S2 (NO, jetzt geschlossen) → Spule K1 → 0V
+- K1 zieht an
+
+### Schritt 2: Selbsthaltung
+- K1-Hilfskontakt (parallel zu S2) schliesst
+- K1 bleibt angezogen auch nach Loslassen von S2
+
+### Schritt 3: Motor läuft
+- K1-Hauptkontakte (im Hauptstromkreis) geschlossen
+- Motor dreht
+
+### Schritt 4: Stoptaster S1 drücken
+- S1 (NC-Kontakt) öffnet
+- Strom zu K1-Spule unterbrochen
+- K1 fällt ab, alle K1-Kontakte öffnen
+- Motor stoppt
+
+### Schritt 5: Motorschutz-Auslösung
+- Q1 thermisch ausgelöst → Q1-NC-Kontakt im Steuerstromkreis öffnet
+- K1 kann nicht mehr anziehen (Störungsverriegelung)
+
+## Leserichtung im Stromlaufplan
+1. Netzeinspeisung oben
+2. Von oben nach unten lesen
+3. Strom fliesst von L (links) nach N/0V (rechts)
+4. Jede Zeile = ein Strompfad (Netzplannummer)
+5. Querbezüge: Kontakt hier → Spule auf Seite X
+
+## Wichtige Begriffe
+- Ruhestrom-Kreis (RS): Strom fliesst bei Normalbetrieb (Öffner im Pfad)
+- Arbeitsstrom-Kreis (AS): Strom fliesst nur bei Betätigung (Schliesser im Pfad)
+- NOT-AUS ist immer Öffner (Ruhestromkreis) für höhere Sicherheit!`,
+      },
+      {
+        id: 'klemmenplan',
+        titel: 'Klemmenplan und Leitungsverzeichnis',
+        inhalt: `Der Klemmenplan verbindet den Schaltschrank (innen) mit der Anlage (aussen) und ist das zentrale Dokument für die Verdrahtung.
+
+## Warum Klemmenpläne?
+
+Kabel zwischen Schaltschrank und Maschine werden auf Klemmenleisten aufgelegt. Jede Klemme hat eine Nummer. Der Plan zeigt:
+- Welches Gerät innen mit welcher Klemme verbunden ist
+- Welches Feldgerät aussen an welcher Klemme liegt
+- Welcher Leiterquerschnitt und welche Leiterbezeichnung verwendet werden
+
+## Aufbau einer Klemmenleiste
+
+\`\`\`
+Klemmenleiste X1 (Motorverdrahtung):
++-------+----------+-----------------+----------+-----+
+| Kl.   | Von      | Bezeichnung     | Nach     | mm2 |
++-------+----------+-----------------+----------+-----+
+| X1:1  | -F1:2    | L1 Motor        | -K1:1    | 2.5 |
+| X1:2  | -F1:4    | L2 Motor        | -K1:3    | 2.5 |
+| X1:3  | -Q1:T3   | L3 Motor        | -K1:5    | 2.5 |
++-------+----------+-----------------+----------+-----+
+
+Klemmenleiste X2 (Steuerung):
++-------+----------+-----------------+----------+-----+
+| Kl.   | Von      | Bezeichnung     | Nach     | mm2 |
++-------+----------+-----------------+----------+-----+
+| X2:1  | -T1:2    | +24V DC         | -S1:1    | 1.5 |
+| X2:2  | 0V       | 0V Steuerung    | -K1:A2   | 1.5 |
+| X2:3  | -K1:A1   | Schütz K1 Plus  | -S2:1    | 1.5 |
+| X2:4  | -Q1:95   | Motorschutz NC  | -S1:2    | 1.5 |
++-------+----------+-----------------+----------+-----+
+\`\`\`
+
+## Spalten-Erklärung
+
+| Spalte | Bedeutung |
+|--------|-----------|
+| Kl.    | Klemmennummer (X1:1 = Leiste X1, Klemme 1) |
+| Von    | Anschluss des Geräts im Schaltschrank |
+| Bezeichnung | Leiterfunktion / Kabelbezeichnung |
+| Nach   | Anschluss am Feldgerät oder Klemme |
+| mm²   | Leiterquerschnitt |
+
+## Leitungsverzeichnis (Kabelplan)
+
+Ergänzt den Klemmenplan um Kabelinformationen:
+
+\`\`\`
+Leitungsverzeichnis:
++--------+--------+-------+-------+------+--------+----------+
+| Kab.Nr | Von    | Nach  | Typ   | Adern| mm2    | Länge(m) |
++--------+--------+-------+-------+------+--------+----------+
+| W01    | X1:1-3 | M1    | NYYÖ  | 4G   | 2.5    | 12       |
+| W02    | X2:1-4 | S1/S2 | LIYY  | 4x   | 0.75   | 8        |
+| W03    | X2:5-6 | Q1    | H07V  | 2x   | 1.5    | 5        |
++--------+--------+-------+-------+------+--------+----------+
+\`\`\`
+
+## Kabeltypen (Auswahl)
+- NYY: Kunststoffkabel, fest verlegt (Erdkabel)
+- NYYÖ: NYY mit Schirm (EMV-geschützt)
+- LIYY: Steuerleitung, flexibel, für Schleppketten
+- H07V-K: Einzelader, flexibel, für Schaltschrank
+- ÖLFLEX: Markenname für Steuer-/Schleppkabel
+
+## Aderendhülsen und Leiterfarben
+Nach DIN VDE 0293-308:
+- Braun/Schwarz/Grau: L1, L2, L3
+- Blau: Neutralleiter N
+- Grün-Gelb: Schutzleiter PE
+- Violett/Orange/Rosa: Steuerleitung verschiedener Potentiale
+
+## Praxistipp: Klemme belegen
+1. Klemmenplan öffnen → Klemme finden
+2. "Von" lesen → Gerät innen anschliessen
+3. "Nach" lesen → Kabel zum Feldgerät belegen
+4. Leiterbezeichnung aufkleben (Klemmenschilder)
+5. Im Klemmenplan abhaken`,
+      },
+      {
+        id: 'pneumatikschaltplan',
+        titel: 'Pneumatikschaltplan lesen (ISO 1219)',
+        inhalt: `Pneumatikschaltpläne werden nach ISO 1219 gezeichnet. Die Symbole sind international genormt und zeigen die Funktion – nicht die Baugrösse oder den Einbauort.
+
+## Grundregeln ISO 1219
+
+- Alle Ventile werden in Ruhestellung gezeichnet
+- Strömungsrichtung: Dreieck zeigt Flussrichtung
+- Anschlussbezeichnung: 1=Druck, 2+4=Arbeit, 3+5=Entlüftung
+
+## Wichtige Grundsymbole
+
+### Druckluftquelle
+  (Kreis mit Dreieck nach oben)
+Druckluftnetz oder Kompressor.
+
+### Filter
+  (Rechteck mit Kurve)
+Entfernt Schmutz und Wasser.
+
+### Druckregler
+  (Rechteck mit Pfeil und Feder)
+Stellt Arbeitsdruck ein.
+
+### Öler
+  (Rechteck mit Öltropfen)
+Fügt Schmieröl zur Druckluft hinzu.
+
+### FRL-Einheit (Filter-Regler-Öler)
+  [F]--[R]--[L]
+Wird am Eingang jeder Pneumatikanlage montiert.
+
+## Wegeventile
+
+### 3/2-Wegeventil (Einfachwirkend)
+\`\`\`
+      Y1 (Magnet)
+      |
+  +---+---+
+  | 1>2   |  Stellung 1 (stromlos): 2-3 verbunden (Entlüftung)
+  |   3   |  Stellung 2 (Magnet): 1-2 verbunden (Druck zu A)
+  +-------+
+  1   2   3
+ (P) (A) (R)
+\`\`\`
+
+### 5/2-Wegeventil (Doppeltwirkend)
+\`\`\`
+      Y1         Y2
+      |           |
+  +---+-----------+---+
+  | 1>2    |   4>5    |  Stellung 1: P->A, B->Auspuff
+  |        |          |  Stellung 2: P->B, A->Auspuff
+  +---+-----------+---+
+  1   2   3   4   5
+ (P) (A) (E1)(B) (E2)
+\`\`\`
+
+## Vollständiges Beispiel: Doppeltwirkender Zylinder
+
+\`\`\`
+Druckluft 6 bar
+      |
+    [FRL]          <- Filter-Regler-Öler
+      |
+   +--+--+
+   | 5/2 | <-- Magnet Y1 (Ausfahren), Y2 (Einfahren)
+   +--+--+
+   A  |  B
+   |  |  |
+   +--+--+        <- Pneumatikzylinder doppeltwirkend
+   Kolbenboden    Kolbenstangenseite
+\`\`\`
+
+## Drosselrückschlagventil (Geschwindigkeitsregelung)
+
+\`\`\`
+Ausfahrgeschwindigkeit regeln (Abluftdrosselung):
+
+Ventilausgang B --> [->|<-] --> Zylinder A-Seite
+                  Drossel + Rückschlagventil
+
+Pfeilrichtung: Durchfluss gedrosselt
+Gegenrichtung: Durchfluss frei (Rückschlagventil öffnet)
+\`\`\`
+
+## Anschlussbezeichnungen nach ISO 1219
+| Nr. | Buchstabe | Bedeutung |
+|-----|-----------|-----------|
+| 1   | P         | Druckluft (Versorgung) |
+| 2   | A         | Arbeitsanschluss 1 |
+| 3   | R / T     | Entlüftung 1 |
+| 4   | B         | Arbeitsanschluss 2 |
+| 5   | S         | Entlüftung 2 |
+| 12  | Z         | Pilotanschluss |
+
+## Schaltplan lesen – Vorgehen
+1. Druckluftquelle oben suchen
+2. FRL-Einheit identifizieren
+3. Wegeventile: Anzahl Anschlüsse/Stellungen lesen
+4. Zylinder: ein- oder doppeltwirkend?
+5. Steuersignale: elektrisch (Magnet) oder pneumatisch (Pilot)?
+6. Hilfsfunktionen: Drossel, Schnellentlüftung, Druckspeicher?
+
+## Häufige Fehlerquellen
+- Rückschlagventil falsch eingebaut (Pfeilrichtung beachten!)
+- FRL-Einheit nicht regelmässig entleert (Wasseransammlung)
+- Druckregler nicht eingestellt → Zylinder zu schnell oder zu langsam`,
+      },
+      {
+        id: 'sps-verdrahtung',
+        titel: 'SPS-Verdrahtungsplan und E/A-Liste',
+        inhalt: `Die E/A-Liste (auch I/O-Liste) ist die Schnittstelle zwischen Elektroplanung, SPS-Programmierung und Verdrahtung. Sie definiert welche SPS-Adresse zu welchem Feldgerät gehört.
+
+## Was ist eine E/A-Liste?
+
+Die E/A-Liste ordnet jeder SPS-Adresse ein physisches Feldgerät zu:
+- Adresse (z.B. I0.0): Bezeichnung, Feldgerät, Klemme, Kabelfarbe
+- Basis für Programmerstellung UND Verdrahtung
+- Erzeugt im Engineering-Tool (TIA Portal, EPLAN usw.)
+
+## Beispiel E/A-Liste Motorsteuerung
+
+\`\`\`
+EINGÄNGE (Digitale Inputs - 24V DC):
++--------+----------------------+------------------+--------+
+|Adresse | Bezeichnung          | Feldgerät        | Klemme |
++--------+----------------------+------------------+--------+
+| I0.0   | Starttaster EIN      | S2 (Schliesser)  | X2:3   |
+| I0.1   | Stoptaster AUS       | S1 (Öffner)      | X2:4   |
+| I0.2   | Motorschutz-Auslösg. | Q1 NC-Kontakt    | X2:5   |
+| I0.3   | Endlage vorne        | B1 induktiv      | X3:1   |
+| I0.4   | Endlage hinten       | B2 induktiv      | X3:2   |
+| I0.5   | Not-Halt             | S0 (Öffner/NC)   | X2:2   |
++--------+----------------------+------------------+--------+
+
+AUSGÄNGE (Digitale Outputs - 24V DC):
++--------+----------------------+------------------+--------+
+|Adresse | Bezeichnung          | Feldgerät        | Klemme |
++--------+----------------------+------------------+--------+
+| Q0.0   | Schütz Motor EIN     | K1-Spule (A1/A2) | X2:6   |
+| Q0.1   | Meldeleuchte grün    | H1 (RUN)         | X2:7   |
+| Q0.2   | Störungsleuchte rot  | H2 (FAULT)       | X2:8   |
+| Q0.3   | Magnetventil Y1      | Y1 Ausfahren     | X3:3   |
++--------+----------------------+------------------+--------+
+
+ANALOGE EINGÄNGE (4–20 mA):
++--------+----------------------+------------------+--------+
+| IW64   | Drucktransmitter     | B10 (0–16 bar)   | X4:1/2 |
+| IW66   | Temperaturfühler PT100| B11 (-20..80°C) | X4:3/4 |
++--------+----------------------+------------------+--------+
+\`\`\`
+
+## SPS-Anschlussschema (Verdrahtungsprinzip)
+
+\`\`\`
+Digitaler Eingang (Source/PNP):
+
++24V ─────────────────────────────────── SPS COM+
+                    |
+                [Sensor PNP]  (z.B. B1 Näherungsschalter)
+                    |
+SPS I0.3 ──────────┘        Sensor schaltet +24V auf Eingang
+
+Digitaler Ausgang (Source):
+
+SPS Q0.0 ──── [Last / Relais-Spule K1] ──── 0V
+                                    |
++24V ─────────────────────────────────── SPS COM+
+(SPS schaltet den + durch, 0V kommt direkt)
+\`\`\`
+
+## SPS-Adressierung Siemens S7
+
+\`\`\`
+I = Eingang (Input)       Q = Ausgang (Output)
+M = Merker (intern)       DB = Datenbaustein
+
+Adresse:  I [Byte] . [Bit]
+Beispiel: I0.0 = Eingangsbyte 0, Bit 0
+          I0.7 = Eingangsbyte 0, Bit 7
+          I1.0 = Eingangsbyte 1, Bit 0
+
+Analog:   IW64 = Eingangswort (16 Bit) Adresse 64
+\`\`\`
+
+## Vom Schaltplan zur SPS – Arbeitsablauf
+
+1. E/A-Liste erstellen (mit Kunde / Auftraggeber)
+2. Hardware konfigurieren (TIA Portal: CPU, Baugruppen)
+3. Adressen vergeben und Symboltabelle anlegen
+4. Verdrahtungsplan zeichnen (Klemmen an SPS-Baugruppe)
+5. Programm schreiben (Symbole aus Symboltabelle verwenden)
+6. Simulation / Test am Schaltschrank
+7. Inbetriebnahme an der Maschine
+
+## Typische Fehler beim Anschliessen
+- PNP und NPN verwechselt (Sensor schaltet, SPS reagiert nicht)
+- COM-Klemme vergessen (Ausgang gibt Signal, aber Gerät reagiert nicht)
+- 24V und 0V vertauscht an Ausgang (Kurzschluss!)
+- Schirmung nicht geerdet (EMV-Probleme, falsche Messwerte)
+
+## Wichtig: Querschnitte
+- Analogsignal-Leitungen: 0,25–0,75 mm² abgeschirmt
+- Digitale 24V-Signale: 0,5–1,5 mm²
+- Leistungskreise (230/400 V): nach Absicherung dimensionieren`,
+      },
+    ],
+  },
 ]
