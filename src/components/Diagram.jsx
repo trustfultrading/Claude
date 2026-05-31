@@ -522,6 +522,312 @@ export function SternDreieckZeitdiagramm() {
   )
 }
 
+export function MotorHauptstromkreis() {
+  return (
+    <div className="my-4 flex flex-col items-center">
+      <svg width="300" height="270" viewBox="0 0 300 270" className="drop-shadow-sm">
+        {/* Phase lines from top */}
+        <line x1="75" y1="10" x2="75" y2="45" stroke="#ef4444" strokeWidth="2.5"/>
+        <line x1="150" y1="10" x2="150" y2="45" stroke="#ca8a04" strokeWidth="2.5"/>
+        <line x1="225" y1="10" x2="225" y2="45" stroke="#3b82f6" strokeWidth="2.5"/>
+        {/* Phase labels */}
+        <text x="75" y="8" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#ef4444">L1</text>
+        <text x="150" y="8" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#ca8a04">L2</text>
+        <text x="225" y="8" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#3b82f6">L3</text>
+        {/* F1 Fuses */}
+        <rect x="60" y="45" width="30" height="23" rx="1" fill="white" stroke="#374151" strokeWidth="1.5"/>
+        <line x1="75" y1="45" x2="75" y2="68" stroke="#374151" strokeWidth="1"/>
+        <rect x="135" y="45" width="30" height="23" rx="1" fill="white" stroke="#374151" strokeWidth="1.5"/>
+        <line x1="150" y1="45" x2="150" y2="68" stroke="#374151" strokeWidth="1"/>
+        <rect x="210" y="45" width="30" height="23" rx="1" fill="white" stroke="#374151" strokeWidth="1.5"/>
+        <line x1="225" y1="45" x2="225" y2="68" stroke="#374151" strokeWidth="1"/>
+        <text x="160" y="57" fontSize="10" fill="#374151" fontWeight="bold">F1</text>
+        {/* Lines F1 to K1 */}
+        <line x1="75" y1="68" x2="75" y2="88" stroke="#374151" strokeWidth="2"/>
+        <line x1="150" y1="68" x2="150" y2="88" stroke="#374151" strokeWidth="2"/>
+        <line x1="225" y1="68" x2="225" y2="88" stroke="#374151" strokeWidth="2"/>
+        {/* K1 NO contacts upper dot */}
+        <circle cx="75" cy="92" r="3.5" fill="#1d4ed8"/>
+        <circle cx="150" cy="92" r="3.5" fill="#1d4ed8"/>
+        <circle cx="225" cy="92" r="3.5" fill="#1d4ed8"/>
+        {/* K1 diagonal bridge line */}
+        <line x1="75" y1="92" x2="68" y2="118" stroke="#1d4ed8" strokeWidth="2"/>
+        <line x1="150" y1="92" x2="143" y2="118" stroke="#1d4ed8" strokeWidth="2"/>
+        <line x1="225" y1="92" x2="218" y2="118" stroke="#1d4ed8" strokeWidth="2"/>
+        {/* K1 NO contacts lower dot */}
+        <circle cx="68" cy="118" r="3.5" fill="#1d4ed8"/>
+        <circle cx="143" cy="118" r="3.5" fill="#1d4ed8"/>
+        <circle cx="218" cy="118" r="3.5" fill="#1d4ed8"/>
+        <text x="240" y="108" fontSize="10" fill="#1d4ed8" fontWeight="bold">K1</text>
+        {/* Lines K1 to Q1 */}
+        <line x1="68" y1="118" x2="68" y2="135" stroke="#374151" strokeWidth="2"/>
+        <line x1="143" y1="118" x2="143" y2="135" stroke="#374151" strokeWidth="2"/>
+        <line x1="218" y1="118" x2="218" y2="135" stroke="#374151" strokeWidth="2"/>
+        {/* Q1 Motorschutz rectangles */}
+        <rect x="53" y="135" width="30" height="22" rx="2" fill="#fff7ed" stroke="#ea580c" strokeWidth="1.5"/>
+        <path d="M55 146 Q63 140 71 146 Q79 152 83 146" fill="none" stroke="#ea580c" strokeWidth="1.5"/>
+        <rect x="128" y="135" width="30" height="22" rx="2" fill="#fff7ed" stroke="#ea580c" strokeWidth="1.5"/>
+        <path d="M130 146 Q138 140 146 146 Q154 152 158 146" fill="none" stroke="#ea580c" strokeWidth="1.5"/>
+        <rect x="203" y="135" width="30" height="22" rx="2" fill="#fff7ed" stroke="#ea580c" strokeWidth="1.5"/>
+        <path d="M205 146 Q213 140 221 146 Q229 152 233 146" fill="none" stroke="#ea580c" strokeWidth="1.5"/>
+        <text x="240" y="148" fontSize="10" fill="#ea580c" fontWeight="bold">Q1</text>
+        {/* Lines Q1 to busbar */}
+        <line x1="68" y1="157" x2="68" y2="185" stroke="#374151" strokeWidth="2"/>
+        <line x1="143" y1="157" x2="143" y2="185" stroke="#374151" strokeWidth="2"/>
+        <line x1="218" y1="157" x2="218" y2="185" stroke="#374151" strokeWidth="2"/>
+        {/* Motor busbar */}
+        <line x1="68" y1="185" x2="218" y2="185" stroke="#374151" strokeWidth="2.5"/>
+        {/* Line to motor */}
+        <line x1="143" y1="185" x2="143" y2="204" stroke="#374151" strokeWidth="2"/>
+        {/* Motor circle */}
+        <circle cx="143" cy="232" r="28" fill="#fef3c7" stroke="#d97706" strokeWidth="2"/>
+        <text x="143" y="228" textAnchor="middle" fontSize="14" fontWeight="bold" fill="#92400e">M</text>
+        <text x="143" y="244" textAnchor="middle" fontSize="10" fill="#92400e">3~</text>
+        {/* PE Symbol */}
+        <line x1="143" y1="260" x2="143" y2="265" stroke="#16a34a" strokeWidth="1.5"/>
+        <line x1="133" y1="265" x2="153" y2="265" stroke="#16a34a" strokeWidth="2"/>
+        <line x1="136" y1="268" x2="150" y2="268" stroke="#16a34a" strokeWidth="1.5"/>
+        <line x1="139" y1="271" x2="147" y2="271" stroke="#16a34a" strokeWidth="1"/>
+      </svg>
+      <div className="flex flex-wrap gap-2 mt-2 justify-center text-xs">
+        <span className="bg-gray-100 px-2 py-1 rounded border">F1 Sicherung</span>
+        <span className="bg-blue-100 px-2 py-1 rounded border border-blue-300 text-blue-800">K1 Schütz-Hauptkontakt</span>
+        <span className="bg-orange-100 px-2 py-1 rounded border border-orange-300 text-orange-800">Q1 Motorschutzschalter</span>
+        <span className="bg-yellow-100 px-2 py-1 rounded border border-yellow-400 text-yellow-800">M Drehstrommotor</span>
+      </div>
+    </div>
+  )
+}
+
+export function SelbsthaltungsSchaltung() {
+  return (
+    <div className="my-4 flex flex-col items-center">
+      <svg width="520" height="130" viewBox="0 0 520 130" className="w-full drop-shadow-sm">
+        {/* +24V rail left */}
+        <line x1="25" y1="5" x2="25" y2="125" stroke="#ef4444" strokeWidth="3"/>
+        <text x="25" y="3" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#ef4444">+24V</text>
+        {/* 0V rail right */}
+        <line x1="495" y1="5" x2="495" y2="125" stroke="#374151" strokeWidth="3"/>
+        <text x="495" y="3" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#374151">0V</text>
+        {/* Main rung line from +24V */}
+        <line x1="25" y1="45" x2="60" y2="45" stroke="#374151" strokeWidth="2"/>
+        {/* S0 Notaus NC contact */}
+        <line x1="60" y1="35" x2="60" y2="55" stroke="#374151" strokeWidth="2"/>
+        <line x1="80" y1="35" x2="80" y2="55" stroke="#374151" strokeWidth="2"/>
+        <line x1="60" y1="35" x2="80" y2="35" stroke="#ef4444" strokeWidth="2"/>
+        <text x="70" y="31" textAnchor="middle" fontSize="8" fill="#ef4444">S0</text>
+        <text x="70" y="64" textAnchor="middle" fontSize="8" fill="#6b7280">Notaus</text>
+        <line x1="80" y1="45" x2="110" y2="45" stroke="#374151" strokeWidth="2"/>
+        {/* Q1-NC Motorschutz NC contact */}
+        <line x1="110" y1="35" x2="110" y2="55" stroke="#374151" strokeWidth="2"/>
+        <line x1="130" y1="35" x2="130" y2="55" stroke="#374151" strokeWidth="2"/>
+        <line x1="110" y1="35" x2="130" y2="35" stroke="#ea580c" strokeWidth="2"/>
+        <text x="120" y="31" textAnchor="middle" fontSize="8" fill="#ea580c">Q1</text>
+        <text x="120" y="64" textAnchor="middle" fontSize="8" fill="#6b7280">Motorschutz</text>
+        <line x1="130" y1="45" x2="160" y2="45" stroke="#374151" strokeWidth="2"/>
+        {/* S1 Stop NC contact */}
+        <line x1="160" y1="35" x2="160" y2="55" stroke="#374151" strokeWidth="2"/>
+        <line x1="180" y1="35" x2="180" y2="55" stroke="#374151" strokeWidth="2"/>
+        <line x1="160" y1="35" x2="180" y2="35" stroke="#374151" strokeWidth="2"/>
+        <text x="170" y="31" textAnchor="middle" fontSize="8" fill="#374151">S1</text>
+        <text x="170" y="64" textAnchor="middle" fontSize="8" fill="#6b7280">Stop</text>
+        <line x1="180" y1="45" x2="210" y2="45" stroke="#374151" strokeWidth="2"/>
+        {/* Junction point for parallel */}
+        <circle cx="210" cy="45" r="3" fill="#374151"/>
+        {/* Upper path: S2 Start NO contact */}
+        <line x1="210" y1="35" x2="210" y2="55" stroke="#374151" strokeWidth="2"/>
+        <line x1="230" y1="35" x2="230" y2="55" stroke="#374151" strokeWidth="2"/>
+        <line x1="212" y1="53" x2="228" y2="37" stroke="#16a34a" strokeWidth="2"/>
+        <text x="220" y="31" textAnchor="middle" fontSize="8" fill="#16a34a">S2</text>
+        <text x="220" y="64" textAnchor="middle" fontSize="8" fill="#16a34a">Start</text>
+        <line x1="230" y1="45" x2="340" y2="45" stroke="#374151" strokeWidth="2"/>
+        {/* Lower parallel path for self-hold */}
+        <line x1="210" y1="45" x2="210" y2="90" stroke="#374151" strokeWidth="1.5"/>
+        <line x1="210" y1="90" x2="250" y2="90" stroke="#374151" strokeWidth="1.5"/>
+        {/* K1 Aux NO contact self-hold */}
+        <line x1="250" y1="80" x2="250" y2="100" stroke="#374151" strokeWidth="2"/>
+        <line x1="270" y1="80" x2="270" y2="100" stroke="#374151" strokeWidth="2"/>
+        <line x1="252" y1="98" x2="268" y2="82" stroke="#1d4ed8" strokeWidth="2"/>
+        <text x="260" y="76" textAnchor="middle" fontSize="8" fill="#1d4ed8">K1</text>
+        <text x="260" y="109" textAnchor="middle" fontSize="8" fill="#1d4ed8">Selbsthalt.</text>
+        <line x1="270" y1="90" x2="340" y2="90" stroke="#374151" strokeWidth="1.5"/>
+        <line x1="340" y1="90" x2="340" y2="45" stroke="#374151" strokeWidth="1.5"/>
+        {/* Junction point right side of parallel */}
+        <circle cx="340" cy="45" r="3" fill="#374151"/>
+        {/* Line to coil */}
+        <line x1="340" y1="45" x2="377" y2="45" stroke="#374151" strokeWidth="2"/>
+        {/* K1 Coil */}
+        <ellipse cx="405" cy="45" rx="28" ry="14" fill="#eff6ff" stroke="#1d4ed8" strokeWidth="2"/>
+        <text x="405" y="42" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#1d4ed8">K1</text>
+        <text x="405" y="53" textAnchor="middle" fontSize="8" fill="#1d4ed8">Spule</text>
+        {/* Line from coil to 0V */}
+        <line x1="433" y1="45" x2="495" y2="45" stroke="#374151" strokeWidth="2"/>
+        {/* Self-hold arrow label */}
+        <text x="260" y="120" textAnchor="middle" fontSize="9" fill="#1d4ed8" fontWeight="bold">Selbsthaltung</text>
+      </svg>
+      <p className="text-xs text-gray-600 mt-2 text-center max-w-md">
+        Wenn K1 anzieht &#8594; K1-Hilfskontakt schliesst &#8594; K1 bleibt angezogen auch nach Loslassen des Starttasters
+      </p>
+    </div>
+  )
+}
+
+export function WendeschaltungSchema() {
+  return (
+    <div className="my-4 flex flex-col items-center">
+      <svg width="520" height="180" viewBox="0 0 520 180" className="w-full drop-shadow-sm">
+        {/* +24V rail */}
+        <line x1="25" y1="5" x2="25" y2="175" stroke="#ef4444" strokeWidth="3"/>
+        <text x="25" y="3" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#ef4444">+24V</text>
+        {/* 0V rail */}
+        <line x1="495" y1="5" x2="495" y2="175" stroke="#374151" strokeWidth="3"/>
+        <text x="495" y="3" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#374151">0V</text>
+        {/* Rung 1 label */}
+        <text x="30" y="48" fontSize="9" fill="#16a34a" fontWeight="bold">&#8594; Rechtslauf</text>
+        {/* Rung 1 from +24V */}
+        <line x1="25" y1="55" x2="55" y2="55" stroke="#374151" strokeWidth="2"/>
+        {/* S0 NC Notaus Rung1 */}
+        <line x1="55" y1="46" x2="55" y2="64" stroke="#374151" strokeWidth="2"/>
+        <line x1="72" y1="46" x2="72" y2="64" stroke="#374151" strokeWidth="2"/>
+        <line x1="55" y1="46" x2="72" y2="46" stroke="#ef4444" strokeWidth="2"/>
+        <text x="63" y="43" textAnchor="middle" fontSize="7.5" fill="#ef4444">S0 NC</text>
+        <line x1="72" y1="55" x2="100" y2="55" stroke="#374151" strokeWidth="2"/>
+        {/* K2-NC Verrieg. */}
+        <line x1="100" y1="46" x2="100" y2="64" stroke="#374151" strokeWidth="2"/>
+        <line x1="117" y1="46" x2="117" y2="64" stroke="#374151" strokeWidth="2"/>
+        <line x1="100" y1="46" x2="117" y2="46" stroke="#dc2626" strokeWidth="2"/>
+        <text x="108" y="43" textAnchor="middle" fontSize="7.5" fill="#dc2626">K2-NC</text>
+        <text x="108" y="70" textAnchor="middle" fontSize="7" fill="#dc2626">Verrieg.</text>
+        <line x1="117" y1="55" x2="150" y2="55" stroke="#374151" strokeWidth="2"/>
+        {/* S1 NO Start green Rung1 */}
+        <line x1="150" y1="46" x2="150" y2="64" stroke="#374151" strokeWidth="2"/>
+        <line x1="167" y1="46" x2="167" y2="64" stroke="#374151" strokeWidth="2"/>
+        <line x1="152" y1="62" x2="165" y2="48" stroke="#16a34a" strokeWidth="2"/>
+        <text x="158" y="43" textAnchor="middle" fontSize="7.5" fill="#16a34a">S1 NO</text>
+        <line x1="167" y1="55" x2="215" y2="55" stroke="#374151" strokeWidth="2"/>
+        {/* K1 Aux self-hold NO Rung1 */}
+        <line x1="215" y1="46" x2="215" y2="64" stroke="#374151" strokeWidth="2"/>
+        <line x1="232" y1="46" x2="232" y2="64" stroke="#374151" strokeWidth="2"/>
+        <line x1="217" y1="62" x2="230" y2="48" stroke="#1d4ed8" strokeWidth="2"/>
+        <text x="223" y="43" textAnchor="middle" fontSize="7.5" fill="#1d4ed8">K1-Hilfs</text>
+        <line x1="232" y1="55" x2="350" y2="55" stroke="#374151" strokeWidth="2"/>
+        {/* K1 Coil blue */}
+        <ellipse cx="378" cy="55" rx="28" ry="14" fill="#eff6ff" stroke="#1d4ed8" strokeWidth="2"/>
+        <text x="378" y="52" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#1d4ed8">K1</text>
+        <text x="378" y="62" textAnchor="middle" fontSize="8" fill="#1d4ed8">Spule</text>
+        <line x1="406" y1="55" x2="495" y2="55" stroke="#374151" strokeWidth="2"/>
+        {/* Dashed K1-NC feedback line */}
+        <line x1="378" y1="69" x2="378" y2="130" stroke="#1d4ed8" strokeWidth="1" strokeDasharray="5,3"/>
+        <line x1="378" y1="130" x2="100" y2="130" stroke="#1d4ed8" strokeWidth="1" strokeDasharray="5,3"/>
+        <line x1="100" y1="130" x2="100" y2="116" stroke="#1d4ed8" strokeWidth="1" strokeDasharray="5,3"/>
+        {/* Rung 2 label */}
+        <text x="30" y="118" fontSize="9" fill="#dc2626" fontWeight="bold">&#8592; Linkslauf</text>
+        {/* Rung 2 from +24V */}
+        <line x1="25" y1="125" x2="55" y2="125" stroke="#374151" strokeWidth="2"/>
+        {/* S0 NC Notaus Rung2 */}
+        <line x1="55" y1="116" x2="55" y2="134" stroke="#374151" strokeWidth="2"/>
+        <line x1="72" y1="116" x2="72" y2="134" stroke="#374151" strokeWidth="2"/>
+        <line x1="55" y1="116" x2="72" y2="116" stroke="#ef4444" strokeWidth="2"/>
+        <text x="63" y="113" textAnchor="middle" fontSize="7.5" fill="#ef4444">S0 NC</text>
+        <line x1="72" y1="125" x2="100" y2="125" stroke="#374151" strokeWidth="2"/>
+        {/* K1-NC Verrieg. */}
+        <line x1="100" y1="116" x2="100" y2="134" stroke="#374151" strokeWidth="2"/>
+        <line x1="117" y1="116" x2="117" y2="134" stroke="#374151" strokeWidth="2"/>
+        <line x1="100" y1="116" x2="117" y2="116" stroke="#1d4ed8" strokeWidth="2"/>
+        <text x="108" y="113" textAnchor="middle" fontSize="7.5" fill="#1d4ed8">K1-NC</text>
+        <text x="108" y="140" textAnchor="middle" fontSize="7" fill="#1d4ed8">Verrieg.</text>
+        <line x1="117" y1="125" x2="150" y2="125" stroke="#374151" strokeWidth="2"/>
+        {/* S2 NO Start red Rung2 */}
+        <line x1="150" y1="116" x2="150" y2="134" stroke="#374151" strokeWidth="2"/>
+        <line x1="167" y1="116" x2="167" y2="134" stroke="#374151" strokeWidth="2"/>
+        <line x1="152" y1="132" x2="165" y2="118" stroke="#dc2626" strokeWidth="2"/>
+        <text x="158" y="113" textAnchor="middle" fontSize="7.5" fill="#dc2626">S2 NO</text>
+        <line x1="167" y1="125" x2="215" y2="125" stroke="#374151" strokeWidth="2"/>
+        {/* K2 Aux self-hold NO Rung2 */}
+        <line x1="215" y1="116" x2="215" y2="134" stroke="#374151" strokeWidth="2"/>
+        <line x1="232" y1="116" x2="232" y2="134" stroke="#374151" strokeWidth="2"/>
+        <line x1="217" y1="132" x2="230" y2="118" stroke="#dc2626" strokeWidth="2"/>
+        <text x="223" y="113" textAnchor="middle" fontSize="7.5" fill="#dc2626">K2-Hilfs</text>
+        <line x1="232" y1="125" x2="350" y2="125" stroke="#374151" strokeWidth="2"/>
+        {/* K2 Coil red */}
+        <ellipse cx="378" cy="125" rx="28" ry="14" fill="#fef2f2" stroke="#dc2626" strokeWidth="2"/>
+        <text x="378" y="122" textAnchor="middle" fontSize="9" fontWeight="bold" fill="#dc2626">K2</text>
+        <text x="378" y="132" textAnchor="middle" fontSize="8" fill="#dc2626">Spule</text>
+        <line x1="406" y1="125" x2="495" y2="125" stroke="#374151" strokeWidth="2"/>
+        {/* Dashed K2-NC feedback line */}
+        <line x1="350" y1="125" x2="340" y2="125" stroke="#dc2626" strokeWidth="1" strokeDasharray="5,3"/>
+        <line x1="340" y1="125" x2="340" y2="60" stroke="#dc2626" strokeWidth="1" strokeDasharray="5,3"/>
+        <line x1="340" y1="60" x2="108" y2="60" stroke="#dc2626" strokeWidth="1" strokeDasharray="5,3"/>
+        <line x1="108" y1="60" x2="108" y2="69" stroke="#dc2626" strokeWidth="1" strokeDasharray="5,3"/>
+      </svg>
+      <p className="text-xs text-gray-600 mt-2 text-center max-w-md">
+        K1-NC sperrt K2 | K2-NC sperrt K1 &#8211; verhindert gleichzeitiges Einschalten &#8594; Kurzschlussschutz
+      </p>
+    </div>
+  )
+}
+
+export function BrueckenGleichrichter() {
+  return (
+    <div className="my-4 flex flex-col items-center">
+      <svg width="340" height="230" viewBox="0 0 340 230" className="drop-shadow-sm">
+        <defs>
+          <marker id="arr-blue-bg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#1d4ed8"/>
+          </marker>
+          <marker id="arr-red-bg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#dc2626"/>
+          </marker>
+        </defs>
+        {/* Transformer on left */}
+        <rect x="5" y="95" width="30" height="40" rx="4" fill="#f3f4f6" stroke="#6b7280" strokeWidth="1.5"/>
+        <text x="20" y="112" textAnchor="middle" fontSize="8" fill="#6b7280">AC</text>
+        <text x="20" y="123" textAnchor="middle" fontSize="8" fill="#6b7280">Trafo</text>
+        {/* AC connections from transformer */}
+        <line x1="35" y1="103" x2="60" y2="115" stroke="#6b7280" strokeWidth="1.5"/>
+        <line x1="35" y1="127" x2="60" y2="115" stroke="#6b7280" strokeWidth="1.5"/>
+        {/* D1: AC1 to DC+ blue */}
+        <line x1="60" y1="115" x2="165" y2="30" stroke="#1d4ed8" strokeWidth="2" markerEnd="url(#arr-blue-bg)"/>
+        <text x="95" y="65" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#1d4ed8">D1</text>
+        {/* D2: AC2 to DC+ blue */}
+        <line x1="280" y1="115" x2="175" y2="30" stroke="#1d4ed8" strokeWidth="2" markerEnd="url(#arr-blue-bg)"/>
+        <text x="245" y="65" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#1d4ed8">D2</text>
+        {/* D3: DC- to AC1 red */}
+        <line x1="170" y1="205" x2="65" y2="120" stroke="#dc2626" strokeWidth="2" markerEnd="url(#arr-red-bg)"/>
+        <text x="95" y="175" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#dc2626">D3</text>
+        {/* D4: DC- to AC2 red */}
+        <line x1="170" y1="205" x2="275" y2="120" stroke="#dc2626" strokeWidth="2" markerEnd="url(#arr-red-bg)"/>
+        <text x="245" y="175" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#dc2626">D4</text>
+        {/* Node circles */}
+        <circle cx="170" cy="25" r="5" fill="#1d4ed8"/>
+        <circle cx="60" cy="115" r="5" fill="#6b7280"/>
+        <circle cx="280" cy="115" r="5" fill="#6b7280"/>
+        <circle cx="170" cy="205" r="5" fill="#dc2626"/>
+        {/* Labels */}
+        <text x="170" y="18" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#1d4ed8">DC+</text>
+        <text x="48" y="115" textAnchor="end" fontSize="10" fill="#6b7280">AC1</text>
+        <text x="292" y="115" textAnchor="start" fontSize="10" fill="#6b7280">AC2</text>
+        <text x="170" y="218" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#dc2626">DC-</text>
+        {/* DC+ output line right */}
+        <line x1="170" y1="25" x2="305" y2="25" stroke="#1d4ed8" strokeWidth="2"/>
+        <text x="315" y="29" fontSize="10" fontWeight="bold" fill="#1d4ed8">+</text>
+        {/* DC- output line right */}
+        <line x1="170" y1="205" x2="305" y2="205" stroke="#dc2626" strokeWidth="2"/>
+        <text x="315" y="209" fontSize="10" fontWeight="bold" fill="#dc2626">-</text>
+        {/* C1 capacitor right side */}
+        <line x1="305" y1="25" x2="305" y2="100" stroke="#1d4ed8" strokeWidth="1.5"/>
+        <line x1="291" y1="100" x2="319" y2="100" stroke="#1d4ed8" strokeWidth="2.5"/>
+        <line x1="291" y1="107" x2="319" y2="107" stroke="#dc2626" strokeWidth="2.5"/>
+        <line x1="305" y1="107" x2="305" y2="205" stroke="#dc2626" strokeWidth="1.5"/>
+        <text x="328" y="108" fontSize="9" fill="#374151">C1</text>
+      </svg>
+      <p className="text-xs text-gray-600 mt-2 text-center max-w-md">
+        D1+D2 leiten positive Halbwelle | D3+D4 leiten negative Halbwelle | C1 glättet Restwelligkeit
+      </p>
+    </div>
+  )
+}
+
 // Map of diagram IDs to components
 export const diagramMap = {
   ohm: OhmDreieck,
@@ -537,4 +843,8 @@ export const diagramMap = {
   logik: LogikGatter,
   kirchhoff: KirchhoffKnoten,
   pe_pruefung: SchutzleiterpruefungSchema,
+  motorkreis: MotorHauptstromkreis,
+  selbsthaltung: SelbsthaltungsSchaltung,
+  wendeschaltung: WendeschaltungSchema,
+  brueckengleichrichter: BrueckenGleichrichter,
 }

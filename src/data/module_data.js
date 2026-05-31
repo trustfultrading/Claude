@@ -151,6 +151,7 @@ Strom bei 400 V Drehstrom: I = S / (√3 × U) = 6875 / (1,732 × 400) ≈ 9,9 A
       },
       {
         id: 'kondensator-spule',
+        diagramId: 'brueckengleichrichter',
         titel: 'Kondensatoren und Spulen',
         inhalt: `Kondensatoren und Spulen sind reaktive Bauteile, die Energie speichern und in der Automatisierungstechnik vielseitig eingesetzt werden.
 
@@ -1574,6 +1575,7 @@ Sammelplatz kennen, Fluchtwege freihalten, im Brandfall: Aufzug verboten!`,
     lektionen: [
       {
         id: 'stromlaufplaene',
+        diagramId: 'selbsthaltung',
         titel: 'Stromlaufpläne lesen',
         inhalt: `Stromlaufpläne (auch Schaltpläne) sind die «Sprache» des Elektrikers und Automatikers. Sie zeigen, wie elektrische Schaltungen aufgebaut sind, und sind Grundlage für Installation, Inbetriebnahme und Fehlersuche.
 
@@ -1733,6 +1735,7 @@ Vorgelagerte Sicherungen müssen grösser sein als nachgelagerte → Fehler scha
       },
       {
         id: 'schaltgeraete',
+        diagramId: 'motorkreis',
         titel: 'Schaltgeräte: Schütze und Relais',
         inhalt: `Schütze und Relais sind elektromechanische Schalter, die durch eine Steuerspannung betätigt werden und Lasten ein- und ausschalten.
 
@@ -2005,6 +2008,7 @@ Leitungen kreuzen sich, sind aber NICHT verbunden.
       },
       {
         id: 'stromlaufplan',
+        diagramId: 'wendeschaltung',
         titel: 'Stromlaufplan lesen – Schritt für Schritt',
         inhalt: `Ein Stromlaufplan zeigt die elektrische Funktion einer Anlage – nicht wo die Kabel liegen, sondern WIE die Schaltung funktioniert.
 
